@@ -11,12 +11,15 @@ import Util.GabrielLinkedList;
  * @author Gabriel Pinto
  */
 public class Prueba {
+
     public static void main(String[] args) {
         GabrielLinkedList<Integer> x = new GabrielLinkedList<>();
         x.insertarFin(3);
-        x.agregarPosicion(4, 1);
+
+        x.agregarPosicion(4, 0);
+
         System.out.println(x);
-        
+
     }
-    
+
 }

@@ -8,32 +8,35 @@ package Util;
  *
  * @author camil
  */
-public class Nodo {
+public class Nodo<T> {
 
-    private Nodo next;
-    private int info;
+    private T info;
+    private Nodo<T> sig;
 
-    public Nodo() {
+     Nodo() {
     }
 
-    public Nodo(int data) {
-        this.info = data;
+     Nodo(T info, Nodo<T> sig) {
+        this.info = info;
+        this.sig = sig;
     }
 
-    public Nodo getNext() {
-        return next;
-    }
 
-    public void setNext(Nodo next) {
-        this.next = next;
-    }
-
-    public int getInfo() {
+     T getInfo() {
         return info;
     }
 
-    public void setData(int info) {
+     Nodo<T> getSig() {
+        return sig;
+    }
+
+     void setInfo(T info) {
         this.info = info;
     }
+
+     void setSig(Nodo<T> sig) {
+        this.sig = sig;
+    }
+
 
 }

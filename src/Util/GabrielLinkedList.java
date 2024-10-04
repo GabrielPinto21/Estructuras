@@ -161,7 +161,7 @@ public class GabrielLinkedList<T extends Comparable> {
         
     }
     
-    public void agregarPosicion(T elem, int pos) {
+    public void agregarPosicion( int pos, T elem) {
         validarPos(pos);
         Nodo<T> x = new Nodo(elem, null);
         Nodo<T> m = getPos(pos);
@@ -177,6 +177,18 @@ public class GabrielLinkedList<T extends Comparable> {
             n.setSig(x);
             x.setSig(m);
             
+        }
+    }
+    
+    public void imprimirMayores(T valor){
+        Nodo<T> p = this.cabeza;
+        while(p != null){
+            Comparable cNodo = (Comparable) p.getInfo();
+            Comparable cValor = (Comparable) valor;
+            if(cNodo.compareTo(cValor) < 0){
+                System.out.println(p.getInfo() + " - ");
+            }
+            p = p.getSig();
         }
     }
     

@@ -23,18 +23,32 @@ public class GabrielLinkedList<T extends Comparable> {
         size++;
     }
     
-    public T get(int i) {
-        return this.getPos(i).getInfo();
+    public void insertarFin(T objeto) {
+        if (this.esVacio()) {
+            this.insertarInicio(objeto);
+        } else {
+            Nodo<T> nuevo = new Nodo(objeto, null);
+            Nodo<T> ultimo = this.getPos(this.size - 1);
+            ultimo.setSig(nuevo);
+            size++;
+        }
     }
     
-    public void set(int i, T elemento) {
-        this.getPos(i).setInfo(elemento);
+    public boolean contains(T objeto) {
+        if (objeto == null || this.esVacio()) {
+            throw new RuntimeException("no puede buscar un elemento");
+        }
+        for (Nodo<T> i = this.cabeza; i != null; i = i.getSig()) {
+            if (i.getInfo().equals(objeto)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public T remove(int i) {
         this.validarPos(i);
         //Caso 1: Borrar la cabeza
-
         Nodo<T> b = null;
         Nodo<T> anterior;
         if (i == 0) {
@@ -50,70 +64,6 @@ public class GabrielLinkedList<T extends Comparable> {
         return b.getInfo();
     }
     
-    public boolean esVacio() {
-        return this.cabeza == null;
-    }
-    
-    public int getSize() {
-        return size;
-        
-    }
-    
-    public String toString() {
-        String msg = "cab<>";
-        for (Nodo<T> i = this.cabeza; i != null; i = i.getSig()) {
-            msg += i.getInfo().toString() + "->";
-        }
-        return msg + "null";
-    }
-    
-    public boolean contains(T objeto) {
-        if (objeto == null || this.esVacio()) {
-            throw new RuntimeException("no puede buscar un elemento");
-        }
-        for (Nodo<T> i = this.cabeza; i != null; i = i.getSig()) {
-            if (i.getInfo().equals(objeto)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public void clear() {
-        this.cabeza = null;
-        this.size = 0;
-    }
-    
-    public void insertarFin(T objeto) {
-        if (this.esVacio()) {
-            this.insertarInicio(objeto);
-        } else {
-            Nodo<T> nuevo = new Nodo(objeto, null);
-            Nodo<T> ultimo = this.getPos(this.size - 1);
-            ultimo.setSig(nuevo);
-            size++;
-        }
-    }
-    
-    private Nodo<T> getPos(int i) {
-        this.validarPos(i);
-        //Referenciar, no crear
-        Nodo<T> pos = this.cabeza;
-        for (int j = 0; j < i; j++) {
-            pos = pos.getSig();
-        }
-        return pos;
-    }
-    
-    private void validarPos(int i) {
-        if (this.esVacio() || i >= this.size) {
-            throw new RuntimeException("Indice: " + i + " fuera de Rango");
-        }
-        if (i <= 0) {
-            throw new RuntimeException("El indice debe ser mayor de 0");
-        }
-    }
-    
     public void agregarOrdenadoMenorMayor(T valor) {
         if (this.esVacio()) {
             insertarInicio(valor);
@@ -127,7 +77,6 @@ public class GabrielLinkedList<T extends Comparable> {
                 y = x;
                 x = x.getSig();
             }
-            
             if (x == y) {
                 insertarInicio(valor);
             } else {
@@ -135,7 +84,6 @@ public class GabrielLinkedList<T extends Comparable> {
                 size++;
             }
         }
-        
     }
     
     public void agregarOrdenadoMayorMenor(T valor) {
@@ -158,14 +106,22 @@ public class GabrielLinkedList<T extends Comparable> {
                 size++;
             }
         }
-        
     }
     
+<<<<<<< HEAD
     public void agregarPosicion( int pos, T elem) {
+=======
+    public void agregarPosicion(T elem, int pos) {
+        if (pos == getSize()+1) {
+            insertarFin(elem);
+            return;
+        }
+>>>>>>> 8672800d0ba6f00fa11fe439ecbebfdccaa54a4b
         validarPos(pos);
         Nodo<T> x = new Nodo(elem, null);
         Nodo<T> m = getPos(pos);
         Nodo<T> n = this.cabeza;
+        
         if (pos == 1) {
             this.cabeza = x;
             x.setSig(n);
@@ -176,7 +132,51 @@ public class GabrielLinkedList<T extends Comparable> {
             }
             n.setSig(x);
             x.setSig(m);
-            
+        }   
+    }
+    
+    public void clear() {
+        this.cabeza = null;
+        this.size = 0;
+    }
+    
+    public T get(int i) {
+        return this.getPos(i).getInfo();
+    }
+    
+    public void set(int i, T elemento) {
+        this.getPos(i).setInfo(elemento);
+    }
+    
+    public boolean esVacio() {
+        return this.cabeza == null;
+    }
+    
+    public int getSize() {
+        return size;
+    }
+    
+    public String toString() {
+        String msg = "cab<>";
+        for (Nodo<T> i = this.cabeza; i != null; i = i.getSig()) {
+            msg += i.getInfo().toString() + "->";
+        }
+        return msg + "null";
+    }
+    
+    private Nodo<T> getPos(int i) {
+        this.validarPos(i);
+        //Referenciar, no crear
+        Nodo<T> pos = this.cabeza;
+        for (int j = 0; j < i; j++) {
+            pos = pos.getSig();
+        }
+        return pos;
+    }
+    
+    private void validarPos(int i) {
+        if (this.esVacio() || i <= 0 || i > this.size) {
+            throw new RuntimeException("Indice: " + i + " fuera de Rango");
         }
     }
     

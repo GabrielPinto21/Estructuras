@@ -12,7 +12,9 @@ import modelo.Persona;
  * @author Gabriel Pinto
  */
 public class Prueba {
+
     public static void main(String[] args) {
+<<<<<<< HEAD
         GabrielLinkedList<Persona> list = new GabrielLinkedList<>();
         list.insertarFin(new Persona("Armando"));
         list.insertarFin(new Persona("Lucia"));
@@ -27,6 +29,15 @@ public class Prueba {
         // list.add(5, new Persona("Gabriel"));
         System.out.println(list);
         
+=======
+        GabrielLinkedList<Integer> x = new GabrielLinkedList<>();
+        x.insertarFin(3);
+
+        x.agregarPosicion(4, 0);
+
+        System.out.println(x);
+
+>>>>>>> 8672800d0ba6f00fa11fe439ecbebfdccaa54a4b
     }
-    
+
 }

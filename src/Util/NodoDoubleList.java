@@ -4,33 +4,42 @@
  */
 package util;
 
-public class Nodo<T> {
+public class NodoDoubleList<T> {
 
     private T info;
-    private Nodo<T> sig;
+    private NodoDoubleList<T> sig;
+    private NodoDoubleList<T> ant;
 
-    Nodo() {
+    NodoDoubleList() {
     }
 
-    Nodo(T info, Nodo<T> sig) {
+    NodoDoubleList(T info, NodoDoubleList<T> sig, NodoDoubleList<T> ant) {
         this.info = info;
         this.sig = sig;
+        this.ant = ant;
     }
 
     T getInfo() {
         return info;
     }
 
-    Nodo<T> getSig() {
+    NodoDoubleList<T> getSig() {
         return sig;
+    }
+
+    NodoDoubleList<T> getAnt() {
+        return ant;
     }
 
     void setInfo(T info) {
         this.info = info;
     }
 
-    void setSig(Nodo<T> sig) {
+    void setSig(NodoDoubleList<T> sig) {
         this.sig = sig;
     }
 
+    void setAnt(NodoDoubleList<T> ant) {
+        this.ant = ant;
+    }
 }

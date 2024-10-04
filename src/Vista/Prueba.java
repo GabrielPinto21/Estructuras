@@ -2,42 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Vista;
+package vista;
 
-import Util.GabrielLinkedList;
+import util.GabrielLinkedList;
 import modelo.Persona;
 
-/**
- *
- * @author Gabriel Pinto
- */
 public class Prueba {
 
     public static void main(String[] args) {
-<<<<<<< HEAD
+
         GabrielLinkedList<Persona> list = new GabrielLinkedList<>();
         list.insertarFin(new Persona("Armando"));
         list.insertarFin(new Persona("Lucia"));
         list.insertarFin(new Persona("Jhonny"));
-//        list.agregarPosicion(1, new Persona("Lucio"));
-//        list.agregarPosicion(2, new Persona("Esmeralda"));
-//        list.agregarPosicion(3, new Persona("Román"));
-//        list.agregarPosicion(4, new Persona("Valeria"));
-//        list.agregarPosicion(5, new Persona("Sofía"));
-//        list.agregarPosicion(6, new Persona("Perla"));
+        System.out.println(list.toString());
+        list.agregarPosicion(new Persona("Esmeralda"), 1);
+        list.agregarPosicion(new Persona("Román"), 2);
+        list.agregarPosicion(new Persona("Valeria"), 3);
+        list.agregarPosicion(new Persona("Sofía"), 4);
+        list.agregarPosicion(new Persona("Perla"), 5);
+        System.out.println(list.toString());
         list.agregarOrdenadoMenorMayor(new Persona("Eva"));
-        // list.add(5, new Persona("Gabriel"));
+        list.insertarInicio(new Persona("Gabriel"));
         System.out.println(list);
-        
-=======
-        GabrielLinkedList<Integer> x = new GabrielLinkedList<>();
-        x.insertarFin(3);
 
-        x.agregarPosicion(4, 0);
-
-        System.out.println(x);
-
->>>>>>> 8672800d0ba6f00fa11fe439ecbebfdccaa54a4b
     }
 
 }

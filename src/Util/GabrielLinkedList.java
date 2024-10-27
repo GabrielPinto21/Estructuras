@@ -4,6 +4,7 @@
  */
 package util;
 
+@SuppressWarnings("rawtypes")
 public class GabrielLinkedList<T extends Comparable> {
 
     private Nodo<T> cabeza;
